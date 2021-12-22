@@ -45,20 +45,11 @@ please setup this
 ##### /public_html/artisan schedule:run >> /dev/null 2>&1
 
 // Project run command
-##### php artisan server
- 
-#### Admin Credentials
-user: admin@gmail.com
-password: 12345678
-
-See demo  http://assignmentapi.hossainme.com
-
+##### php artisan server 
 ### Project Frontend Setup 
 
 ##### npm install   
 // Project run command
 ##### npm run dev
 // Project production build command
-##### npm run --prod build 
-
-See demo  http://assignment.hossainme.com
+##### npm run --prod build  
