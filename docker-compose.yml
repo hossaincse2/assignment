@@ -1,0 +1,40 @@
+version: '3.7'
+services: 
+  vue-ui:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile-dev
+    ports:
+      - "8080:8080"
+    container_name: assignment-vue
+    volumes:
+       - ./frontend:/usr/src/app/frontend
+       - /usr/src/app/frontend/node_modules 
+  app:
+    build:
+      context: ./backend 
+      dockerfile: .docker/Dockerfile
+    image: 'wedevs-assignment'
+    ports:
+      - 8081:80
+    volumes:
+      - ./:/var/www/html
+  db:
+    image: mysql:5.7
+    restart: always
+    ports:
+      - "3406:3406"
+    environment:
+      MYSQL_DATABASE: 'assignment'
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+      MYSQL_ROOT_PASSWORD: ""
+    volumes:
+      - ./db:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - 8083:80
+    environment:
+      - PMA_ARBITRARY=1
